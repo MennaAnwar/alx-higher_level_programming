@@ -20,7 +20,7 @@ Usage
 ::
 
     >>> say_my_name("Menna Mohamed", "Anwar Ramadan")
-    My name is Cornelius Maxwell Jones II
+    My name is Menna Mohamed Anwar Ramadan
 
 The parameter ```last_name``` is optional. If no last name is provided,
 an empty string is printed instead.
