@@ -6,44 +6,43 @@ How to Use 7-base_geometry.py
 
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
->>> string = "property"
 >>> bg = BaseGeometry()
->>> bg.integer_validator(string,12)
->>> bg.integer_validator(string,89)
->>> bg.integer_validator(string, -2)
+>>> bg.integer_validator("my_int",12)
+>>> bg.integer_validator("width",89)
+>>> bg.integer_validator("distance", -2)
 Traceback (most recent call last):
-ValueError: property must be greater than 0
+ValueError: distance must be greater than 0
 
->>> bg.integer_validator(string, 0)
+>>> bg.integer_validator("age", 0)
 Traceback (most recent call last):
-ValueError: property must be greater than 0
+ValueError: age must be greater than 0
 
->>> bg.integer_validator(string, "string")
+>>> bg.integer_validator("age", "string")
 Traceback (most recent call last):
-TypeError: property must be an integer
+TypeError: age must be an integer
 
->>> bg.integer_validator(string, [])
+>>> bg.integer_validator("list", [])
 Traceback (most recent call last):
-TypeError: property must be an integer
+TypeError: list must be an integer
 
->>> bg.integer_validator(string, [1])
+>>> bg.integer_validator("length", [1])
 Traceback (most recent call last):
-TypeError: property must be an integer
+TypeError: length must be an integer
 
->>> bg.integer_validator(string, (1))
->>> bg.integer_validator(string, (1,2))
+>>> bg.integer_validator("x", (1))
+>>> bg.integer_validator("x", (1,2))
 Traceback (most recent call last):
-TypeError: property must be an integer
+TypeError: x must be an integer
 
->>> bg.integer_validator(string, {})
+>>> bg.integer_validator("set", {})
 Traceback (most recent call last):
-TypeError: property must be an integer
+TypeError: set must be an integer
 
->>> bg.integer_validator(string, {1:2})
+>>> bg.integer_validator("range", {1:2})
 Traceback (most recent call last):
-TypeError: property must be an integer
+TypeError: range must be an integer
 
->>> bg.integer_validator(string,)
+>>> bg.integer_validator("x",)
 Traceback (most recent call last):
 TypeError: integer_validator() missing 1 required positional argument: 'value'
 
@@ -51,6 +50,6 @@ TypeError: integer_validator() missing 1 required positional argument: 'value'
 Traceback (most recent call last):
 TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
->>> bg.integer_validator(string,1.0)
+>>> bg.integer_validator("x",1.0)
 Traceback (most recent call last):
-TypeError: property must be an integer
+TypeError: x must be an integer
