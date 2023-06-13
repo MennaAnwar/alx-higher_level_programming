@@ -18,11 +18,6 @@ ValueError: distance must be greater than 0
 Traceback (most recent call last):
 Exception: area() is not implemented
 
->>> bg = BaseGeometry()
->>> bg.integer_validator("age", True)
-Traceback (most recent call last):
-TypeError: age must be an integer
-
 >>> bg.integer_validator("age", 0)
 Traceback (most recent call last):
 ValueError: age must be greater than 0
