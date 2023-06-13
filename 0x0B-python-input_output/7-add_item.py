@@ -10,6 +10,5 @@ try:
 except:
     jsonList = []
 
-for i in range(1, len(sys.argv)):
-	jsonList.append(sys.argv[i])
+jsonList.extend(sys.argv[1:])
 save_to_json_file(jsonList, "add_item.json")
