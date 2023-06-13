@@ -13,11 +13,6 @@ How to Use 7-base_geometry.py
 Traceback (most recent call last):
 ValueError: distance must be greater than 0
 
->>> bg = BaseGeometry()
->>> bg.area()
-Traceback (most recent call last):
-Exception: area() is not implemented
-
 >>> bg.integer_validator("age", 0)
 Traceback (most recent call last):
 ValueError: age must be greater than 0
@@ -67,6 +62,6 @@ TypeError: age must be an integer
 Traceback (most recent call last):
 TypeError: age must be an integer
 
->>> bg.integer_validator("age", True)
+>>> bg.area()
 Traceback (most recent call last):
-TypeError: age must be an integer
+Exception: area() is not implemented
