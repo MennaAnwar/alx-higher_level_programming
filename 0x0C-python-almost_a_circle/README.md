@@ -259,3 +259,133 @@ $
  ###$
 guillaume@ubuntu:~/$
 ```
+
+## 8. Update #0
+Update the class Rectangle by adding the public method def update(self, *args): that assigns an argument to each attribute:
+
+* 1st argument should be the id attribute
+* 2nd argument should be the width attribute
+* 3rd argument should be the height attribute
+* 4th argument should be the x attribute
+* 5th argument should be the y attribute
+This type of argument is called a “no-keyword argument” - Argument order is super important.
+
+```
+guillaume@ubuntu:~/$ cat 7-main.py
+#!/usr/bin/python3
+""" Doc """
+from models.rectangle import Rectangle
+
+if __name__ == "__main__":
+
+    r1 = Rectangle(10, 10, 10, 10)
+    print(r1)
+
+    r1.update(89)
+    print(r1)
+
+    r1.update(89, 2)
+    print(r1)
+
+    r1.update(89, 2, 3)
+    print(r1)
+
+    r1.update(89, 2, 3, 4)
+    print(r1)
+
+    r1.update(89, 2, 3, 4, 5)
+    print(r1)
+
+guillaume@ubuntu:~/$ ./7-main.py
+[Rectangle] (1) 10/10 - 10/10
+[Rectangle] (89) 10/10 - 10/10
+[Rectangle] (89) 10/10 - 2/10
+[Rectangle] (89) 10/10 - 2/3
+[Rectangle] (89) 4/10 - 2/3
+[Rectangle] (89) 4/5 - 2/3
+guillaume@ubuntu:~/$ 
+```
+
+## 9. Update #1
+
+Update the class Rectangle by updating the public method def update(self, *args): by changing the prototype to update(self, *args, **kwargs) that assigns a key/value argument to attributes:
+
+* **kwargs can be thought of as a double pointer to a dictionary: key/value
+As Python doesn’t have pointers, **kwargs is not literally a double pointer – describing it as such is just a way of explaining its behavior in terms you’re already familiar with
+* **kwargs must be skipped if *args exists and is not empty
+* Each key in this dictionary represents an attribute to the instance
+This type of argument is called a “key-worded argument”. Argument order is not important.
+
+```
+guillaume@ubuntu:~/$ cat 8-main.py
+#!/usr/bin/python3
+""" 8-main """
+from models.rectangle import Rectangle
+
+if __name__ == "__main__":
+
+    r1 = Rectangle(10, 10, 10, 10)
+    print(r1)
+
+    r1.update(height=1)
+    print(r1)
+
+    r1.update(width=1, x=2)
+    print(r1)
+
+    r1.update(y=1, width=2, x=3, id=89)
+    print(r1)
+
+    r1.update(x=1, height=2, y=3, width=4)
+    print(r1)
+
+guillaume@ubuntu:~/$ ./8-main.py
+[Rectangle] (1) 10/10 - 10/10
+[Rectangle] (1) 10/10 - 10/1
+[Rectangle] (1) 2/10 - 1/1
+[Rectangle] (89) 3/1 - 2/1
+[Rectangle] (89) 1/3 - 4/2
+guillaume@ubuntu:~/$ 
+```
+
+## 13. Rectangle instance to dictionary representation
+
+Update the class Rectangle by adding the public method def to_dictionary(self): that returns the dictionary representation of a Rectangle:
+
+This dictionary must contain:
+
+* id
+* width
+* height
+* x
+* y
+
+```
+guillaume@ubuntu:~/$ cat 12-main.py
+#!/usr/bin/python3
+""" 12-main """
+from models.rectangle import Rectangle
+
+if __name__ == "__main__":
+
+    r1 = Rectangle(10, 2, 1, 9)
+    print(r1)
+    r1_dictionary = r1.to_dictionary()
+    print(r1_dictionary)
+    print(type(r1_dictionary))
+
+    r2 = Rectangle(1, 1)
+    print(r2)
+    r2.update(**r1_dictionary)
+    print(r2)
+    print(r1 == r2)
+
+guillaume@ubuntu:~/$ ./12-main.py
+[Rectangle] (1) 1/9 - 10/2
+{'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}
+<class 'dict'>
+[Rectangle] (2) 0/0 - 1/1
+[Rectangle] (1) 1/9 - 10/2
+False
+guillaume@ubuntu:~/$
+```
