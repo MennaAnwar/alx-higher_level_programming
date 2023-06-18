@@ -44,3 +44,13 @@ class Base:
     def from_json_string(json_string):
         """returns list of jsons"""
         return json.loads(json_string or "[]")
+
+    @classmethod
+    def create(cls, **dictionary):
+        """Return a class instantied from a dictionary of attributes."""
+    if cls.__name__ == "Rectangle":
+        new = cls(1, 1)
+    else:
+        new = cls(1)
+    new.update(**dictionary)
+    return new            
