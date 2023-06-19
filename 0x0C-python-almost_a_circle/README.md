@@ -414,7 +414,6 @@ guillaume@ubuntu:~/$
 ```
 
 ## 11. Square size
-mandatory
 Update the class Square by adding the public getter and setter size
 
 * The setter should assign (in this order) the width and the height - with the same value
@@ -543,7 +542,7 @@ guillaume@ubuntu:~/$
 ```
 
 ## 14. Square instance to dictionary representation
-mandatory
+
 Update the class Square by adding the public method def to_dictionary(self): that returns the dictionary representation of a Square:
 
 This dictionary must contain:
@@ -583,7 +582,7 @@ guillaume@ubuntu:~/$
 ```
 
 ## 15. Dictionary to JSON string
-mandatory
+
 JSON is one of the standard formats for sharing data representation.
 
 Update the class Base by adding the static method def to_json_string(list_dictionaries): that returns the JSON string representation of list_dictionaries:
@@ -617,7 +616,7 @@ guillaume@ubuntu:~/$
 ```
 
 ## 16. JSON string to file
-mandatory
+
 Update the class Base by adding the class method def save_to_file(cls, list_objs): that writes the JSON string representation of list_objs to a file:
 
 * list_objs is a list of instances who inherits of Base - example: list of Rectangle or list of Square instances
@@ -646,7 +645,7 @@ guillaume@ubuntu:~/$
 ```
 
 ## 17. JSON string to dictionary
-mandatory
+
 Update the class Base by adding the static method def from_json_string(json_string): that returns the list of the JSON string representation json_string:
 
 * json_string is a string representing a list of dictionaries
@@ -677,7 +676,6 @@ guillaume@ubuntu:~/$ ./16-main.py
 guillaume@ubuntu:~/$ 
 ```
 ## 18. Dictionary to Instance
-mandatory
 Update the class Base by adding the class method def create(cls, **dictionary): that returns an instance with all attributes already set:
 
 * **dictionary can be thought of as a double pointer to a dictionary
@@ -712,7 +710,6 @@ guillaume@ubuntu:~/$
 ```
 
 ## 19. File to instances
-mandatory
 Update the class Base by adding the class method def load_from_file(cls): that returns a list of instances:
 
 * The filename must be: <Class name>.json - example: Rectangle.json
@@ -780,7 +777,6 @@ guillaume@ubuntu:~/$
 ```
 
 ## 20. JSON ok, but CSV?
-#advanced
 Update the class Base by adding the class methods def save_to_file_csv(cls, list_objs): and def load_from_file_csv(cls): that serializes and deserializes in CSV:
 
 * The filename must be: <Class name>.csv - example: Rectangle.csv
@@ -847,3 +843,31 @@ guillaume@ubuntu:~/$ ./100-main.py
 [140268695529176] [Square] (6) 9/1 - 7
 guillaume@ubuntu:~/$ 
 ```
+
+## 21. Let's draw it
+Update the class Base by adding the static method def draw(list_rectangles, list_squares): that opens a window and draws all the Rectangles and Squares:
+
+* You must use the Turtle graphics module
+* To install it: sudo apt-get install python3-tk
+* To make the GUI available outside your vagrant machine, add this line in your Vagrantfile: config.ssh.forward_x11 = true
+* No constraints for color, shape etc… be creative!
+```
+guillaume@ubuntu:~/$ cat 101-main.py
+#!/usr/bin/python3
+""" 101-main """
+from models.base import Base
+from models.rectangle import Rectangle
+from models.square import Square
+
+if __name__ == "__main__":
+
+    list_rectangles = [Rectangle(100, 40), Rectangle(90, 110, 30, 10), Rectangle(20, 25, 110, 80)]
+    list_squares = [Square(35), Square(15, 70, 50), Square(80, 30, 70)]
+
+    Base.draw(list_rectangles, list_squares)
+
+guillaume@ubuntu:~/$ ./101-main.py
+....
+```
+
+
