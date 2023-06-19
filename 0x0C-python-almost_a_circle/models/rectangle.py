@@ -2,6 +2,7 @@
 """Defines a rectangle class."""
 from models.base import Base
 
+
 class Rectangle(Base):
     """Represent a rectangle."""
 
@@ -93,24 +94,9 @@ class Rectangle(Base):
             [print(" ", end="") for x in range(self.x)]
             [print("#", end="") for w in range(self.width)]
             print("")
-    
-    def __str__(self):
-        """Return [Rectangle] (<id>) <x>/<y> - <width>/<height>"""
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
-                                                       self.x, self.y,
-                                                       self.width, self.height)
 
     def update(self, *args, **kwargs):
-        """updates attributes
-            Args:
-            *args (ints): New attribute values.
-                - 1st argument represents id attribute
-                - 2nd argument represents width attribute
-                - 3rd argument represent height attribute
-                - 4th argument represents x attribute
-                - 5th argument represents y attribute
-            **kwargs (dict): New key/value pairs of attributes.
-        """
+        """updates attributes"""
         if args:
             i = 0
             keys = ['id', 'width', 'height', 'x', 'y']
@@ -131,3 +117,9 @@ class Rectangle(Base):
             "x": self.x,
             "y": self.y
         }
+
+    def __str__(self):
+        """Return the print() and str() representation of the Rectangle."""
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id,
+                                                       self.x, self.y,
+                                                       self.width, self.height)
